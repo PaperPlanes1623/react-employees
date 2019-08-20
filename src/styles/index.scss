@@ -50,3 +50,10 @@ $main-txt: black;
 body {
   cursor: pointer;
 }
+
+.emp-header {
+  color: $main-txt;
+  font-size: 30px;
+  padding: 10px;
+  text-align: center;
+}

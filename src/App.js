@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Employees from './components/employee/Employees';
 import EmployeeForm from './components/employee/EmployeeForm';
-import index from './styles/index.scss'
+import index from './styles/index.scss';
 
 
 class App extends Component {
@@ -11,6 +11,17 @@ class App extends Component {
       { id: 2, firstName: 'John', lastName: 'Doe', email: 'john@email.com', phone: '801-655-5555' },
       { id: 3, firstName: 'Mary', lastName: 'Jane', email: 'mary@email.com', phone: '801-755-5555' }
     ]
+  }
+
+  toggleEdit = () => this.setState({ editing: !this.state.editing });
+
+  editEmployee = (employeeData) => {
+    const employees = this.state.employees.map(employee => {
+      if (employee.id === employeeData.id)
+        return employeeData;
+      return employee
+    });
+    this.setState({ employees })
   }
 
   getId = () => {
@@ -40,8 +51,11 @@ class App extends Component {
         <div class="head">
           Employee Management System
         </div>
-        <EmployeeForm add={this.addEmployee} />
-        <Employees employees={employees} remove={this.removeEmployee} />
+        <EmployeeForm add={this.addEmployee} update={this.editEmployee} />
+        <div class="emp-header">
+          All Employees
+        </div>
+        <Employees employees={employees} remove={this.removeEmployee} update={this.editEmployee} edit={this.toggleEdit} />
       </>
     )
   }

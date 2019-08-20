@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Employee = ({ id, firstName, lastName, email, phone, remove }) => (
+const Employee = ({ id, firstName, lastName, email, phone, remove, edit }) => (
   <tr id={id}>
+    <td>{id}</td>
     <td>{firstName}</td>
     <td>{lastName}</td>
     <td>{email}</td>
@@ -10,9 +12,11 @@ const Employee = ({ id, firstName, lastName, email, phone, remove }) => (
       <button class="delete-btn" onClick={() => remove(id)}>
         <strong>Delete</strong>
       </button>
-      <button class="edit-btn">
-        <strong>Edit</strong>
-      </button>
+      <Link to="/edit">
+        <button class="edit-btn" onClick={() => edit(id)}>
+          <strong>Edit</strong>
+        </button>
+      </Link>
     </td>
   </tr>
 )
