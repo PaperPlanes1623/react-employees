@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Divider } from 'semantic-ui-react';
 
 class EmployeeForm extends Component {
   state = { firstName: '', lastName: '', email: '', phone: '' }
@@ -23,35 +23,38 @@ class EmployeeForm extends Component {
     return (
       <div class="form">
         <form onSubmit={this.handleSubmit}>
+          <div class="form-head">
+            <Divider horizontal>New Employee</Divider>
+          </div>
           <input
             placeholder="First Name"
             required
             name="firstName"
             value={firstName}
             onChange={this.handleChange}
-          /><br />
+          /><br /><br />
           <input
             placeholder="Last Name"
             required
             name="lastName"
             value={lastName}
             onChange={this.handleChange}
-          /><br />
+          /><br /><br />
           <input
             placeholder="E-Mail"
             required
             name="email"
             value={email}
             onChange={this.handleChange}
-          /><br />
+          /><br /><br />
           <input
             placeholder="Phone Number"
             required
             name="phone"
             value={phone}
             onChange={this.handleChange}
-          /><br />
-          <button color="blue">Submit</button>
+          /><br /><br />
+          <button class="submit-btn"><strong>Submit</strong></button>
           <br />
         </form>
       </div>

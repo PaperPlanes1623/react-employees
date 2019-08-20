@@ -7,9 +7,12 @@ const Employee = ({ id, firstName, lastName, email, phone, remove }) => (
     <td>{email}</td>
     <td>{phone}</td>
     <td>
-      <button onClick={() => remove(id)}>
-        Delete Employee
-    </button>
+      <button class="delete-btn" onClick={() => remove(id)}>
+        <strong>Delete</strong>
+      </button>
+      <button class="edit-btn">
+        <strong>Edit</strong>
+      </button>
     </td>
   </tr>
 )
