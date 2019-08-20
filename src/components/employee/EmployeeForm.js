@@ -21,37 +21,40 @@ class EmployeeForm extends Component {
   render() {
     const { firstName, lastName, phone, email } = this.state
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Input
-          label="First Name"
-          required
-          name="firstName"
-          value={firstName}
-          onChange={this.handleChange}
-        />
-        <Form.Input
-          label="Last Name"
-          required
-          name="lastName"
-          value={lastName}
-          onChange={this.handleChange}
-        />
-        <Form.Input
-          label="E-Mail"
-          required
-          name="email"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <Form.Input
-          label="Phone Number"
-          required
-          name="phone"
-          value={phone}
-          onChange={this.handleChange}
-        />
-        <Form.Button color="blue">Submit</Form.Button>
-      </Form>
+      <div class="form">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="First Name"
+            required
+            name="firstName"
+            value={firstName}
+            onChange={this.handleChange}
+          /><br />
+          <input
+            placeholder="Last Name"
+            required
+            name="lastName"
+            value={lastName}
+            onChange={this.handleChange}
+          /><br />
+          <input
+            placeholder="E-Mail"
+            required
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          /><br />
+          <input
+            placeholder="Phone Number"
+            required
+            name="phone"
+            value={phone}
+            onChange={this.handleChange}
+          /><br />
+          <button color="blue">Submit</button>
+          <br />
+        </form>
+      </div>
     )
   }
 }

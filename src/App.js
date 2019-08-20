@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Header } from 'semantic-ui-react';
 import Employees from './components/employee/Employees';
 import EmployeeForm from './components/employee/EmployeeForm';
+import index from './styles/index.scss'
 
 
 class App extends Component {
@@ -36,11 +36,13 @@ class App extends Component {
   render() {
     const { employees } = this.state
     return (
-      <Container>
-        <Header as='h1' color='blue'>Employees</Header>
+      <>
+        <div class="head">
+          Employee Management System
+        </div>
         <EmployeeForm add={this.addEmployee} />
         <Employees employees={employees} remove={this.removeEmployee} />
-      </Container>
+      </>
     )
   }
 }
