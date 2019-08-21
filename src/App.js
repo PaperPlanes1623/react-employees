@@ -10,18 +10,24 @@ class App extends Component {
       { id: 1, firstName: 'Bob', lastName: 'Jones', email: 'bob@email.com', phone: '801-555-5555' },
       { id: 2, firstName: 'John', lastName: 'Doe', email: 'john@email.com', phone: '801-655-5555' },
       { id: 3, firstName: 'Mary', lastName: 'Jane', email: 'mary@email.com', phone: '801-755-5555' }
-    ]
+    ],
+    updatedEmployee: '',
   }
 
   toggleEdit = () => this.setState({ editing: !this.state.editing });
 
-  editEmployee = (employeeData, id) => {
+  editEmployee = (employeeData) => {
     const employees = this.state.employees.map(employee => {
       if (employee.id === employeeData.id)
         return employeeData;
       return employee
     });
     this.setState({ employees })
+  }
+
+  updateEmployee = (id) => {
+    const employees = this.state.employees.filter(employee => employee.id === id);
+    this.setState({ updatedEmployee: employees[0] })
   }
 
   getId = () => {
@@ -51,11 +57,11 @@ class App extends Component {
         <div class="head">
           Employee Management System
         </div>
-        <EmployeeForm add={this.addEmployee} update={this.editEmployee} />
+        <EmployeeForm add={this.addEmployee} update={this.editEmployee} updatedEmployee={this.state.updatedEmployee} />
         <div class="emp-header">
           All Employees
         </div>
-        <Employees employees={employees} remove={this.removeEmployee} update={this.editEmployee} edit={this.toggleEdit} />
+        <Employees employees={employees} remove={this.removeEmployee} update={this.updateEmployee} edit={this.toggleEdit} />
       </>
     )
   }

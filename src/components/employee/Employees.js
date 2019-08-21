@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import Employee from './Employee';
 
-const Employees = ({ employees, remove, edit }) => (
+const Employees = ({ employees, remove, edit, update }) => (
 
 
   <div class="table">
@@ -20,7 +20,7 @@ const Employees = ({ employees, remove, edit }) => (
       <Table.Body>
         {
           employees.map(employee => (
-            <Employee key={employee.id} {...employee} remove={remove} edit={edit} />
+            <Employee key={employee.id} {...employee} remove={remove} edit={edit} update={update} />
           ))
         }
       </Table.Body>

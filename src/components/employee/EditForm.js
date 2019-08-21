@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 class EditForm extends Component {
 
@@ -58,7 +58,9 @@ class EditForm extends Component {
             value={this.state.email}
             onChange={this.handleChange}
           /><br /><br />
-          <input type="Submit" />
+          <Link to="/">
+            <input type="Submit" />
+          </Link>
         </form>
 
       </>

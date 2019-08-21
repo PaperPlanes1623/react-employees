@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { Form, Divider } from 'semantic-ui-react';
 
 class EmployeeForm extends Component {
-  state = { firstName: '', lastName: '', email: '', phone: '' }
+  state = {
+    id: this.props.updatedEmployee.id,
+    firstName: this.props.updatedEmployee.firstName,
+    lastName: this.props.updatedEmployee.lastName,
+    email: this.props.updatedEmployee.email,
+    phone: this.props.updatedEmployee.phone
+  }
 
   handleChange = (e) => {
     const { name, value } = e.target
@@ -12,14 +18,30 @@ class EmployeeForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     //call add function
-    const { add } = this.props
-    add(this.state)
+    if (this.props.updatedEmployee.id) {
+      this.props.update(this.state)
+    } else {
+      this.props.add(this.state)
+    }
+
     //clear out form 
-    this.setState({ firstName: '', lastName: '', email: '', phone: '' })
+    this.setState({ id: '', firstName: '', lastName: '', email: '', phone: '' })
+  }
+
+  componentDidUpdate(nextProps) {
+    if (nextProps.updatedEmployee.email !== this.props.updatedEmployee.email) {
+      this.setState({
+        id: this.props.updatedEmployee.id,
+        firstName: this.props.updatedEmployee.firstName,
+        lastName: this.props.updatedEmployee.lastName,
+        email: this.props.updatedEmployee.email,
+        phone: this.props.updatedEmployee.phone
+      })
+    }
   }
 
   render() {
-    const { firstName, lastName, phone, email } = this.state
+    const { firstName, lastName, phone, email } = this.state;
     return (
       <div class="form">
         <form onSubmit={this.handleSubmit}>
