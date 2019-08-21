@@ -15,7 +15,7 @@ class App extends Component {
 
   toggleEdit = () => this.setState({ editing: !this.state.editing });
 
-  editEmployee = (employeeData) => {
+  editEmployee = (employeeData, id) => {
     const employees = this.state.employees.map(employee => {
       if (employee.id === employeeData.id)
         return employeeData;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class EditForm extends Component {
 
@@ -16,12 +16,14 @@ class EditForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.id) {
-      this.props.edit({ id: this.props.id, ...this.state });
-      this.props.toggleEdit()
+      this.props.update(this.state, this.props.id)
+    } else {
+      this.props.add(this.state)
     }
-
-    this.setState({ firstName: '', lastName: '', phone: '', email: '' })
+    this.setState({ firstname: '', lastName: '', phone: '', email: '' })
+    return <Redirect to="/" />
   }
+
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -33,13 +35,13 @@ class EditForm extends Component {
         <h1><strong>Edit Employee</strong></h1>
         <form onSubmit={this.handleSubmit}>
           <input
-            placeholder="firstName"
+            placeholder="First Name"
             name="firstName"
             value={this.state.firstName}
             onChange={this.handleChange}
           /><br /><br />
           <input
-            placeholder="lastName"
+            placeholder="Last Name"
             name="lastName"
             value={this.state.lastName}
             onChange={this.handleChange}
@@ -56,9 +58,7 @@ class EditForm extends Component {
             value={this.state.email}
             onChange={this.handleChange}
           /><br /><br />
-          <Link to='/'>
-            <input type="Submit" />
-          </Link>
+          <input type="Submit" />
         </form>
 
       </>
